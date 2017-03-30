@@ -48,6 +48,7 @@ you can customize to do anything but also use productively without ever touching
 %autosetup
 
 %build
+npm config set python python2.7
 ./script/build
 
 %install
