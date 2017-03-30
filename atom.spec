@@ -19,10 +19,16 @@ Summary: A hackable text editor for the 21st Century
 URL: 	 https://atom.io/
 License: MIT
 
-Source0: https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
+# Source comes from:
+# https://github.com/atom/atom/releases
+# https://github.com/atom/atom/archive/v1.15.0.tar.gz
+Source0: %{name}-%{version}.tar.gz
 
-Requires: lsb-core-noarch
-Requires: libXss.so.1()(64bit)
+%ifarch i386 i486 i586 i686
+Requires: lsb-core-noarch, libXss.so.1
+%else
+Requires: lsb-core-noarch, libXss.so.1()(64bit)
+%endif
 
 AutoReqProv: no
 
@@ -81,5 +87,5 @@ ln -sf  %{ato} %{bin}
 %{_datadir}/icons/hicolor/
 
 %changelog
-* Sun Mar 12 2017 Dominik Opyd <dominik.opyd@gmail.com> 1.15.0-1
-- Initial: Atom 1.15.0
+* Thu Mar 30 2017 Dominik Opyd <dominik.opyd@gmail.com> 1.15.0-1
+- Release: Atom 1.15.0
